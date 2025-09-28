@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indigenous Language Translation App</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="languge.css">
+    <!--<script src="language.js" defer></script>-->
+</head>
+<body>
+    <nav class="nav">
+        <div class="translator">
+            <a href="index.html"><img src="images/logo3.png" alt="logo" class="logo"></a>
+            <p>IsiZulu Cultural Corpus</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="./index.html" class="link" id="link-active">Translator</a></li>
+                <li><a href="./Idioms.html" class="link">Idioms</a></li>
+                <li><a href="./about.html" class="link">About</a></li>
+                
+                <!--<li><a href="#" class="link"></a></li>-->
+            </ul>
+        </div>
+        <p id="user"></p>
+        <div class="nav-button">
+            <button href="./log-in.html" class="btn" id="loginbutton" onclick="login()">Sign In</button>
+            <button href="./log-in.html"  class="btn" id="registerbutton" onclick="register()">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+        
+    </nav>
+    <div class="wrapper">
+        <div class="search-bar">
+            <label for="searchInput"><i class="bx bx-search"></i></label>
+            <input type="search" id="searchInput" placeholder="Search...">
+        </div>
+        <div id="searchResults"></div>
+        <div class="container">
+            <h1>Welcome to the IsiZulu Cultural Corpus</h1>
+            <p>Translate text between various indigenous languages.</p>
+            <p id="secondPart">Choose a language and enter text to be translated. </p>
+            <div class="translatorPart">
+                <ul class="nav-item">
+                    <li>
+                        <select id="sourceLang">
+                            <option value="select" disabled selected>Select Language</option>
+                                <!-- Language options will be populated here -->
+                                <option value="English">English</option>
+                                <option value="Zulu">Zulu</option>
+                                <option value="xhosa">Xhosa</option>
+                                <option value="swati">Swati</option>
+                        </select>
+                    </li>
+                    <li class="bx bx-transfer"></li>
+                    <li>
+                        <select id="translatedLang">
+                            <option value="select" disabled selected>Select Language</option>
+                                <!-- Language options will be populated here -->
+                                <option value="English">English</option>
+                                <option value="Zulu">Zulu</option>
+                                <option value="xhosa">Xhosa</option>
+                                <option value="swati">Swati</option>
+
+                        </select>
+                    </li>
+
+                </ul>
+            <div class="write-box">
+                    <div class="input-box" id="inputBox">
+                        <textarea id="inputText" placeholder="Enter text"></textarea>
+                        <div class="icons">
+                        <!-- <div class="text-length">
+                                <span id="charCount">0</span>/5000
+                            </div> -->
+                            <span class="bx bx-copy"></span>
+                        </div>
+                    </div>
+                    <div class="output-box" id = "outputBox">
+                        <textarea class="translation" id="outputText" disabled></textarea>
+                        <div class="icons">
+                            <span class="bx bx-volume-full"></span>
+                            <span class="bx bx-copy"></span>
+                            
+                    </div>
+                   
+            </div>
+            
+            </div>
+            <button id="translateButton">Translate</button> 
+            
+         
+        </div>
+        
+        <div class="info-section"></div>
+        
+    </div>
+    <p id="welcomeUser"></p>
+    <script>
+    function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+
+        if (i.className === "nav-menu") {
+            i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
+    </script>
+    <script>
+
+        var a = document.getElementById("loginbutton");
+       
+        var y = document.getElementById("register");
+
+        function login() {
+            window.location.href = "log-in.html";
+        }
+        function register() {
+            window.location.href = "log-in.html#register";
+        }
+    </script>
+    <script>
+        searchInput.addEventListener('input', function() {
+        const query = searchInput.value.trim().toLowerCase();
+        searchResults.innerHTML = '';
+        if (!query) {
+            searchResults.style.display = 'none';
+            container.style.display = '';
+            return;
+        }
+
+        // search across colums and find a match
+        const matches = allWords.filter(item =>
+            Object.values(item).some(val =>
+                val && val.toString().toLowerCase().includes(query)
+            )
+        );
+
+        if (matches.length === 0) {
+            searchResults.innerHTML = '<p>No results found.</p>';
+        } else {
+            matches.slice(0, 10).forEach(item => {
+                const row = document.createElement('div');
+                row.style.padding = '8px 0';
+                row.style.borderBottom = '1px solid #eee';
+                row.innerHTML = Object.entries(item)
+                    .map(([lang, word]) => `<strong>${lang}:</strong> ${word}`)
+                    .join(' &nbsp; | &nbsp; ');
+                searchResults.appendChild(row);
+            });
+        }
+
+        searchResults.style.display = 'block';
+        container.style.display = 'none';
+    });
+
+    // Load words on page load
+    loadWords();
+    </script>
+    <script src="language.js"></script>
+
+</body>
+</html>

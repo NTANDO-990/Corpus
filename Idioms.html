@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idioms</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="languge.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="translator">
+            <a href="index.html"><img src="images/logo3.png" alt="logo" class="logo"></a>
+            <p>IsiZulu Cultural Corpus</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="./index.html" class="link" >Translator</a></li>
+                <li><a href="./Idioms.html" class="link" id="link-active">Idioms</a></li>
+                <li><a href="./about.html" class="link" >About</a></li>
+                
+                <!--<li><a href="#" class="link"></a></li>-->
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button href="./log-in.html" class="btn" id="loginbutton" onclick="login()">Sign In</button>
+            <button href="./log-in.html"  class="btn" id="registerbutton" onclick="register()">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+        
+    </nav>
+    <div class="wrapper">
+        <div class="object-holder" >
+            <h1>Common Idioms</h1>
+            <p>Here are some common idioms used in the Zulu language along with their meanings and translations.</p>
+            <div id="idiomsContainer">
+            <h3>Popular Zulu Idioms</h3>
+            </div>
+        </div>
+    </div>
+    <script src="idioms.js"></script>
+</body>
+</html>
